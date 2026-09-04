@@ -1,22 +1,15 @@
-/* Atlas Evolutivo — layout de navegación pública y tema claro del cuaderno editorial. */
+/* Atlas Evolutivo — router mínimo para soportar tanto la raíz Manus como la subruta de GitHub Pages. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
 function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/atlas-evolutivo" component={Home} />
-      <Route path="/atlas-evolutivo/" component={Home} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
-  );
+  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const isHome = currentPath === "/" || currentPath === "/atlas-evolutivo";
+  return isHome ? <Home /> : <NotFound />;
 }
 
 export default function App() {
