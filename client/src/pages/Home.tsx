@@ -3,8 +3,7 @@ import { useState } from "react";
 import { ArrowDownRight, ArrowUpRight, Check, CircleDashed, Leaf, Menu, MoveRight, X } from "lucide-react";
 
 const ASSETS = {
-
-  hero: "/manus-storage/atlas-hero_da8ae8f4.jpg",
+  hero: `${import.meta.env.BASE_URL}atlas-hero.jpg`,
 };
 
 const clues = [
